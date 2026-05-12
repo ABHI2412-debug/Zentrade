@@ -3,16 +3,27 @@ import users from "./src/routes/users.js";
 import trade from "./src/routes/trade.js";
 import cors from "cors";
 import { storeTrade } from "./src/lib/poller.js";
-import { createClient } from "redis";
 import { initWebSocket } from "./src/lib/websocket.js";
 import { connectRedis } from "./src/lib/redis.js";
+import dotenv from "dotenv";
 const app = express();
 
 const port = 5001;
-app.use(cors({
-  origin: "https://trading-hub.akashfullstack.site",
-  credentials: true,
-}));
+dotenv.config();
+
+const allowedOrigins = (
+  process.env.CORS_ORIGIN || "http://localhost:3000"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 async function startServer() {

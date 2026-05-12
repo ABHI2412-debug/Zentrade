@@ -22,7 +22,20 @@ A **real-time cryptocurrency trading platform** with live candlestick charts, tr
 ## Quick Start
 
 ```bash
-# Start all services
+# 1) Create env files
+cp http_server/.env.example http_server/.env
+cp front_end/.env.example front_end/.env
+cp engine/.env.example engine/.env
+cp price_poller/.env.example price_poller/.env
+
+# 2) Install dependencies in each service
+cd front_end && npm install
+cd ../http_server && npm install
+cd ../engine && npm install
+cd ../price_poller && npm install
+cd ..
+
+# 3) Start all services
 ./start.sh
 
 # Or manually:
@@ -30,6 +43,15 @@ cd price_poller && npm run dev    # Port 5000
 cd http_server && npm run dev     # Port 5001
 cd engine && npm run dev          # Port 5002
 cd front_end && npm run dev       # Port 3000
+```
+
+On Windows PowerShell, use `Copy-Item` instead of `cp` for environment files.
+
+```powershell
+Copy-Item http_server/.env.example http_server/.env
+Copy-Item front_end/.env.example front_end/.env
+Copy-Item engine/.env.example engine/.env
+Copy-Item price_poller/.env.example price_poller/.env
 ```
 
 **Access**: http://localhost:3000

@@ -112,6 +112,6 @@ subscribeToKline("btcusdt", "btc");
 subscribeToKline("solusdt", "sol");
 subscribeToKline("ethusdt", "eth");
 
-// subscribeToTrade("btcusdt", "btc");
-// subscribeToTrade("solusdt", "sol");
-// subscribeToTrade("ethusdt", "eth");
+subscribeToTrade("btcusdt", "btc");
+subscribeToTrade("solusdt", "sol");
+subscribeToTrade("ethusdt", "eth");
